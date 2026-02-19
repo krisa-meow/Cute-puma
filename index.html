@@ -29,7 +29,7 @@
             const categoriesItem = document.querySelector("#categories");
 
             for (const category of categories) {
-                categoriesItem.innerHTML += `<div class="category-card" data-category="proccessors"><div class="category-icon"></div><h3>${category.name}</h3><p>${category.desc}</p></div>`;
+                categoriesItem.innerHTML += `<div class="category-card" data-category="proccessors"><div class="category-icon">${category.icon}</div><h3>${category.name}</h3><p>${category.desc}</p></div>`;
             }
         }
 
@@ -42,4 +42,5 @@
         
     </script>
 </body>
+
 </html>
