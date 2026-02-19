@@ -12,4 +12,10 @@ h2 {
     padding: 14px;
     margin: 5px;
     background: #0d0d0d;
+    max-width: 350px;
+}
+
+.category-icon {
+    font-size: 32px;
+    background: #e73e11;
 }
