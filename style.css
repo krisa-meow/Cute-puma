@@ -13,9 +13,11 @@ h2 {
     margin: 5px;
     background: #0d0d0d;
     max-width: 350px;
+    align-items: center;
 }
 
 .category-icon {
-    font-size: 32px;
+    font-size: 48px;
     background: #e73e11;
 }
+
