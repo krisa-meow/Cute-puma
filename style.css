@@ -78,12 +78,13 @@ body {
 
 .calendar:not([hidden]) {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: .5rem;
 }
 
 .controls {
     display: grid;
+    height: 32px;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
 }
@@ -140,7 +141,7 @@ body {
 }
 
 .dates span.today {
-    background-color: rgba(105, 90, 205, 0.1);
+    border: 2px solid #fbabce70;
 }
 
 .dates span.range-start.range-end {
@@ -167,7 +168,7 @@ body {
 }
 
 .action-menu {
-    grid-column: span 2;
+    grid-column: span 3;
     display: flex;
     align-items: center;
     gap: .5rem;

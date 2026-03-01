@@ -2,13 +2,22 @@ const datepicker = document.querySelector(".datepicker");
 const rangeInput = datepicker.querySelector("input");
 const calendarContainer = datepicker.querySelector(".calendar");
 const leftCalendar = datepicker.querySelector(".left-side");
+const centerCalendar = datepicker.querySelector(".center-side");
 const rightCalendar = datepicker.querySelector(".right-side");
 const prevButton = datepicker.querySelector(".prev");
 const nextButton = datepicker.querySelector(".next");
+const selectionEl = datepicker.querySelector(".selection");
+const applyButton = datepicker.querySelector(".apply");
+const cancelButton = datepicker.querySelector(".cancel");
+
+let start = null;
+let end = null;
 
 let leftDate = new Date();
-let rightDate = new Date(leftDate);
-rightDate.setMonth(rightDate.getMonth() + 1);
+let centerDate = new Date(leftDate);
+let rightDate = new Date(centerDate);
+centerDate.setMonth(centerDate.getMonth() + 1);
+rightDate.setMonth(rightDate.getMonth() + 2);
 
 calendarContainer.hidden = false;
 
@@ -25,8 +34,83 @@ const createDateEl = (date, isDisabled, isToday) => {
     span.classList.toggle("disabled", isDisabled);
     if (!isDisabled) {
         span.classList.toggle("today", isToday);
+        span.setAttribute("data-date", formatDate(date));
     }
+
+    span.addEventListener("click", handleDateClick);
+    span.addEventListener("mouseover", handleDateMouseover);
+
     return span;
+};
+
+const displaySelection = () => {
+    if (start && end) {
+        const startDate = start.toLocaleDateString("ru");
+        const endDate = end.toLocaleDateString("ru");
+        selectionEl.textContent = `${startDate} - ${endDate} = ${(end.getTime() - start.getTime()) / (3600000 * 24) + 1} дня(дней)`;
+    }
+};
+
+const applyHighlighting = () => {
+    const dateElements = datepicker.querySelectorAll("span[data-date]");
+    for(const dateEl of dateElements) {
+        dateEl.classList.remove("range-start", "range-end", "in-range");
+    }
+
+    if (start) {
+        const startDate = formatDate(start);
+        const startEl = datepicker.querySelector(`span[data-date="${startDate}" ]`);
+        if(startEl) {
+            startEl.classList.add("range-start");
+            if (!end) startEl.classList.add("range-end");  
+        }
+    }
+    
+    if (end) {
+        const endDate = formatDate(end);
+        const endEl = datepicker.querySelector(`span[data-date="${endDate}" ]`);
+        if (endEl) endEl.classList.add("range-end");
+    }
+
+    if (start && end) {
+        for (const dateEl of dateElements) {
+            const date = new Date(dateEl.dataset.date);
+            if (date > start && date < end) {
+                dateEl.classList.add("in-range");
+            }
+        }
+    }
+};
+
+const handleDateMouseover = (event) => {
+    const hoverEl = event.target;
+    if (start && !end) {
+        applyHighlighting();
+        const hoverDate = new Date(hoverEl.dataset.date);
+        datepicker.querySelectorAll("span[data-date]").forEach((dateEl) => {
+            const date = new Date(dateEl.dataset.date);
+            if (date > start && date < hoverDate && start < hoverDate) {
+                dateEl.classList.add("in-range");
+            }
+        })
+    }
+};
+
+const handleDateClick = (event) => {
+    const dateEl = event.target;
+    const selectedDate = new Date(dateEl.dataset.date); 
+
+    if(!start || (start && end)) {
+        start = selectedDate;
+        end = null;
+    } else if(selectedDate < start) {
+        start = selectedDate;
+    } else {
+        end = selectedDate;
+    }
+
+    applyHighlighting();
+    displaySelection();
 };
 
 const renderCalendar = (calendar, year, month) => {
@@ -58,11 +142,13 @@ const renderCalendar = (calendar, year, month) => {
     }
 
     datesContainer.appendChild(fragment);
-    // console.log(startDate.toDateString());
+
+    applyHighlighting();
 };
 
 const updateCalendars = () => {
     renderCalendar(leftCalendar, leftDate.getFullYear(), leftDate.getMonth());
+    renderCalendar(centerCalendar, centerDate.getFullYear(), centerDate.getMonth());
     renderCalendar(rightCalendar, rightDate.getFullYear(), rightDate.getMonth());
 };
 
@@ -80,12 +166,14 @@ document.addEventListener("click", (event) => {
 
 prevButton.addEventListener("click", () => {
     leftDate.setMonth(leftDate.getMonth() - 1);
+    centerDate.setMonth(centerDate.getMonth() - 1);
     rightDate.setMonth(rightDate.getMonth() - 1);
     updateCalendars();
 });
 
 nextButton.addEventListener("click", () => {
     leftDate.setMonth(leftDate.getMonth() + 1);
+    centerDate.setMonth(centerDate.getMonth() + 1);
     rightDate.setMonth(rightDate.getMonth() + 1);
     updateCalendars();
 });
