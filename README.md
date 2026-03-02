@@ -6,4 +6,4 @@
 - [x] Display calendar dates
 - [x] Navigate between months
 - [x] Select start and end dates
-- [ ] Cancel or apply selection
+- [x] Cancel or apply selection

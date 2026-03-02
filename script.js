@@ -12,14 +12,15 @@ const cancelButton = datepicker.querySelector(".cancel");
 
 let start = null;
 let end = null;
+let originalStart = null;
+let originalEnd = null;
 
 let leftDate = new Date();
+leftDate.setDate(1);
 let centerDate = new Date(leftDate);
 let rightDate = new Date(centerDate);
 centerDate.setMonth(centerDate.getMonth() + 1);
 rightDate.setMonth(rightDate.getMonth() + 2);
-
-calendarContainer.hidden = false;
 
 const formatDate = (date) => {
     const y = date.getFullYear();
@@ -154,6 +155,8 @@ const updateCalendars = () => {
 
 // show datepicker
 rangeInput.addEventListener("focus", () => {
+    originalStart = start;
+    originalEnd = end;
     calendarContainer.hidden = false;
 });
 
@@ -176,6 +179,23 @@ nextButton.addEventListener("click", () => {
     centerDate.setMonth(centerDate.getMonth() + 1);
     rightDate.setMonth(rightDate.getMonth() + 1);
     updateCalendars();
+});
+
+applyButton.addEventListener("click", () => {
+    if (start && end) {
+        const startDate = start.toLocaleDateString("ru");
+        const endDate = end.toLocaleDateString("ru");
+        rangeInput.value = `${startDate} - ${endDate}`;
+        calendarContainer.hidden = true;
+    }
+});
+
+cancelButton.addEventListener("click", () => {
+    start = originalStart;
+    end = originalEnd;
+    applyHighlighting();
+    displaySelection();
+    calendarContainer.hidden = true;
 });
 
 updateCalendars();
