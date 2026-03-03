@@ -75,6 +75,7 @@ a{
 }
 
 .datepicker input {
+    background-color: #f8b983;
     border-radius: inherit;
     border: none;
     outline: none;
@@ -176,7 +177,7 @@ a{
 }
 
 .dates span.today {
-    border: 2px solid #facda1;
+    border: 2px solid #f8b983;
 }
 
 .dates span.range-start.range-end {
