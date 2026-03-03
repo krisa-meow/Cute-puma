@@ -6,8 +6,8 @@
 }
 
 body {
-    /* background-color: #facda1; */
-    background-color: #f8b983;
+    background-color: #facda1;
+    /* background-color: #f8b983; */
     color: #222;
 }
 
@@ -189,20 +189,20 @@ a{
 .dates span.range-start {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
-    background-color: slateblue;
+    background-color: #f8b983;
     color: #fff;
 }
 
 .dates span.range-end {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
-    background-color: slateblue;
+    background-color: #f8b983;
     color: #fff;
 }
 
 .dates span.in-range {
     border-radius: 0;
-    background-color: rgba(105, 90, 205, .2);
+    background-color: #f8ba833f;
 }
 
 .action-menu {
