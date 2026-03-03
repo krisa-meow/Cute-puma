@@ -39,7 +39,7 @@ a{
     font-size: 16px;
     font-weight: 600;
 }
-.header-navbar li:hover {
+.header-navbar li a:hover {
     color: #f8b983;
 }
 
