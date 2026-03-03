@@ -41,10 +41,6 @@ a{
     align-items: end;
 }
 
-.main-section {
-    min-height: calc(100vh - 175px);
-}
-
 .datepicker {
     display: flex;
     justify-content: center;
@@ -229,4 +225,8 @@ a{
     padding: 10px 20px;
     background-color: #fff;
     margin-top: auto;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
