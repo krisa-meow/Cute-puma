@@ -167,7 +167,7 @@ a{
 }
 
 .dates span:hover {
-    background-color: rgba(119, 136, 153, 0.2);
+    background-color: #f8ba833f;
 }
 
 .dates span.disabled {
@@ -176,7 +176,7 @@ a{
 }
 
 .dates span.today {
-    border: 2px solid #fbabce70;
+    border: 2px solid #facda1;
 }
 
 .dates span.range-start.range-end {
