@@ -48,7 +48,9 @@ const displaySelection = () => {
     if (start && end) {
         const startDate = start.toLocaleDateString("ru");
         const endDate = end.toLocaleDateString("ru");
-        selectionEl.textContent = `${startDate} - ${endDate} = ${(end.getTime() - start.getTime()) / (3600000 * 24) + 1} дня(дней) = ${((end.getTime() - start.getTime()) / (3600000 * 24) + 1) * 450} Руб.`;
+
+        let countDays = (end.getTime() - start.getTime()) / (3600000 * 24) + 1;
+        selectionEl.textContent = `${startDate} - ${endDate} = ${countDays} дня(дней) = ${countDays * 450} Руб.`;
     }
 };
 
