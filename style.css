@@ -80,7 +80,7 @@ a{
     border: none;
     outline: none;
     padding: .5rem 2rem .5rem 1rem;
-    font-size: 1.25rem;
+    font-size: 1.05rem;
     width: 100%;
 }
 
@@ -94,7 +94,7 @@ a{
     cursor: pointer;
     background-color: transparent;
     color: slategray;
-    font-size: .85rem;
+    font-size: 1.05rem;
 }
 
 .calendar {
