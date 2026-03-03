@@ -50,7 +50,16 @@ const displaySelection = () => {
         const endDate = end.toLocaleDateString("ru");
 
         let countDays = (end.getTime() - start.getTime()) / (3600000 * 24) + 1;
-        selectionEl.textContent = `${startDate} - ${endDate} = ${countDays} дня(дней) = ${countDays * 450} Руб.`;
+        let discountCost = 1;
+
+        if (countDays >= 30) {
+            discountCost = 0.85;
+        }
+        else {
+            discountCost = 1;
+        }
+        
+        selectionEl.textContent = `${startDate} - ${endDate} = ${countDays} дня(дней) = ${(countDays * 450) * discountCost} Руб.`;
     }
 };
 
