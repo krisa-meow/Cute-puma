@@ -65,7 +65,7 @@ body {
     align-items: center;
     flex-direction: column;
     padding: 0  10px;
-    font-size: .5vw;
+    font-size: 10px;
     font-weight: 600;
     color: #222;
     transform: color 0.3s;
@@ -74,7 +74,7 @@ body {
 .header__logo-title span:nth-child(1) {
     font-family: 'Shnobel', sans-serif;
     color: var(--text-color-accent);
-    font-size: 1.6vw;
+    font-size: 32px;
 }
 
 .header__logo-title:hover span:nth-child(2) {
