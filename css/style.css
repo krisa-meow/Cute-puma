@@ -39,8 +39,8 @@ ul {
     grid-template-columns: 1fr auto 1fr;
     background-color: var(--white);
     padding: 10px 75px;
-    border-bottom: 2px solid #a0a0a0;
-
+    border-bottom: 2px solid #f44f77;
+    box-shadow: 2px 2px 12px #f44f77;
 }
 
 .header__logo {
@@ -75,9 +75,10 @@ ul {
     transition: color .3s;
     text-transform: uppercase;
     padding: 8px 12px;
+    transition: all .3s;
 }
 
-.nav__link:hover {
+.nav__item:hover, .nav__link:hover {
     color: #f44f77;
     transform: scale(1.03);
 }
@@ -108,29 +109,4 @@ ul {
 .contact__link:hover {
     text-decoration: underline;
     color: #f44f77;
-}
-
-.main {
-    padding: 20px 75px;
-}
-
-.hero {
-    display: flex;
-    background-color: var(--white);
-    padding: 20px 40px;
-}
-
-.hero img {
-    width: 500px;
-    object-fit: contain;
-}
-
-.desc__title {
-    font-size: 64px;
-    color: #f44f77;
-}
-
-.desc__text {
-    font-family: serif;
-    font-size: 22px;
 }
