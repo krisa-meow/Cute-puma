@@ -1,5 +1,11 @@
+@font-face {
+    font-family: 'Shnobel';
+    src: url('../Shnobel-Regular.otf');
+}
+
 :root {
     --text-color: #333;
+    --text-color-accent: #f4517a;
     --background-color: #facda1;
     --accent: #f8b983;
     --white: #fff;
@@ -24,7 +30,7 @@ body {
 }
 
 .container {
-    max-width: 1500px;
+    max-width: 1540px;
     margin: 0 auto;
     padding: 0 20px;
 }
@@ -37,7 +43,42 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 15px 0;
+    padding: 15px 20px;
+}
+
+.header__logo {
+    display: flex;
+    /* align-items: center; */
+}
+
+.header__logo-link {
+    display: flex;
+    align-items: center;
+}
+
+.header__logo-link img {
+    height: 3vw;
+}
+
+.header__logo-title {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 0  10px;
+    font-size: .5vw;
+    font-weight: 600;
+    color: #222;
+    transform: color 0.3s;
+}
+
+.header__logo-title span:nth-child(1) {
+    font-family: 'Shnobel', sans-serif;
+    color: var(--text-color-accent);
+    font-size: 1.6vw;
+}
+
+.header__logo-title:hover span:nth-child(2) {
+    color: var(--text-color-accent);
 }
 
 .hamburger, .header__nav-mobile {
