@@ -1,151 +1,136 @@
 @font-face {
     font-family: 'Shnobel';
-    src: url('../Shnobel-Regular.otf');
+    src: url('../fonts/Shnobel-Regular.otf');
 }
-
+/* фон - #facda1, акцент - #f8b983, текст-акцент - #f4517a */
 :root {
-    --text-color: #333;
-    --text-color-accent: #f4517a;
-    --background-color: #facda1;
-    --accent: #f8b983;
     --white: #fff;
+    --black: #000;
+    --text: #333;
+    --text-accent: #f4517a;
 }
 
 *, *::after, *::before {
     margin: 0; padding: 0; box-sizing: border-box;
 }
 
-a {
-    text-decoration: none;
-    color: var(--text-color);
-}
-
-li {
+ul {
     list-style: none;
 }
 
+a {
+    text-decoration: none;
+    color: var(--black);
+}
+
 body {
-    background-color: var(--background-color);
-    font-size: 16px;
+    background-color: #facda1;
 }
 
 .container {
-    /* max-width: 1540px; */
+    max-width: 1750px;
+    width: 100%;
     margin: 0 auto;
-    padding: 0 5vw;
+    padding: 0 50px;
+    /* background-color: #f4517a; */
 }
 
 .header {
     background-color: var(--white);
+    padding: 15px 0;
 }
 
 .header__container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 15px 5vw;
 }
 
 .header__logo {
     display: flex;
-    /* align-items: center; */
-}
-
-.header__logo-link {
-    display: flex;
-    align-items: center;
-}
-
-.header__logo-link img {
-    height: 60px;
-}
-
-.header__logo-title {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    padding: 0  10px;
-    font-size: 10px;
-    font-weight: 600;
-    color: #222;
-    transform: color 0.3s;
-}
-
-.header__logo-title span:nth-child(1) {
-    font-family: 'Shnobel', sans-serif;
-    color: var(--text-color-accent);
-    font-size: 32px;
-}
-
-.header__logo-title:hover span:nth-child(2) {
-    color: var(--text-color-accent);
-}
-
-.header__list {
-    display: flex;
     align-items: center;
     gap: 10px;
-    padding: 10px 0;
-    margin: 0 10px;
 }
 
-.header__item-link {
-    font-family: 'Shnobel', sans-serif;
-    font-size: 18px;
-    font-weight: 600;
-    text-transform: uppercase;
-    color: #333;
-    padding: 10px;
-    transition: color .3s;
-}
-
-.header__item:nth-child(3) .header__item-link{
-    font-size: 26px;
-}
-
-.header__item:hover, .header__item-link:hover{
-    color: var(--text-color-accent);
-    transform: scale(1.05);
-}
-
-.header__contact {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.header__social {
-    display: flex;
-    /* flex-direction: column; */
-}
-
-.header__social i {
-    padding: 10px 10px;
-    font-size: 28px;
-    transition: color .3s;
-}
-
-.header__social i:hover {
-    color: var(--text-color-accent);
-    transform: scale(1.05);
-}
-
-.header__contact-list {
+.logo__title {
     display: flex;
     flex-direction: column;
-    padding: 0 10px;
+    align-items: center;
+    font-size: 11px;
+    font-weight: 600;
 }
 
-.hamburger, .header__nav-mobile {
-    display: none;
+.logo__title span:nth-child(1) {
+    font-family: Shnobel;
+    color: var(--text-accent);
+    font-size: 32px;
+    font-weight: 600;
 }
 
-@media (max-width: 1080px) {
-    .header__nav {display: none;}
-    .hamburger {display: flex;}
-    .header__nav-mobile {display: none;}
+.header__logo:hover .logo__title span:nth-child(1) {
+    color: var(--text);
 }
 
-@media (max-width: 768px) {
-    .header__contact {display: none;}
+.nav__list {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav__link {
+  position: relative;
+  color: #333;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.nav__link::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--text-accent);
+  transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav__link:hover::after {
+    width: 100%;
+}
+
+.nav__link:hover {
+    color: var(--text-accent);
+}
+
+.header__interaction {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.social__list {
+    display: flex;
+    gap: 5px;
+}
+
+.social__link {
+    transition: scale .3 ease;
+}
+
+.social__link:hover {
+    transform: scale(1.05);
+}
+
+.contact__list {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    font-size: 14px;
+    gap: 5px;
+}
+
+.contact__item {
+
 }
